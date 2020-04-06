@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * <p>
  * 2.在使用Set对象储存自定义对象的时候，每次都会调用自定义对象的 hashCode 方法，但是 equals 方法并不是每次都会被调用到
  */
+
 public class TestHashSet {
 
     public static void main(String[] args) {
