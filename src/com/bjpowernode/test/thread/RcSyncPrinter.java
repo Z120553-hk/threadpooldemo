@@ -3,10 +3,10 @@ package com.bjpowernode.test.thread;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class RcSyncPrinter implements Runnable{
+public class RcSyncPrinter implements Runnable {
 
     // 打印次数
-    private static final  int PRINT_COUNT = 10;
+    private static final int PRINT_COUNT = 10;
     // 打印锁
     private final ReentrantLock reentrantLock;
     // 本线程打印所需的condition
@@ -29,7 +29,6 @@ public class RcSyncPrinter implements Runnable{
         // 获取打印锁 进入临界区
         reentrantLock.lock();
         try {
-            System.out.println(Thread.currentThread().getName());
             // 连续打印PRINT_COUNT次
             for (int i = 0; i < PRINT_COUNT; i++) {
                 //打印字符
@@ -48,12 +47,14 @@ public class RcSyncPrinter implements Runnable{
                     }
                 }
 
+
             }
         } finally {
             // 释放打印锁
             reentrantLock.unlock();
         }
     }
+
     public static void main(String[] args) throws InterruptedException {
         // 写锁
         ReentrantLock lock = new ReentrantLock();
@@ -71,9 +72,9 @@ public class RcSyncPrinter implements Runnable{
         Thread printerC = new Thread(new RcSyncPrinter(lock, conditionC, conditionA, 'C'));
         // 依次开始A B C线程
         printerA.start();
-       // Thread.sleep(100);
+        // Thread.sleep(100);
         printerB.start();
-       // Thread.sleep(100);
+        // Thread.sleep(100);
         printerC.start();
     }
 }

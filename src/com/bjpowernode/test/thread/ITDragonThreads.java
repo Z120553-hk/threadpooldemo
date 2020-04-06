@@ -9,7 +9,7 @@ import java.util.concurrent.*;
 public class ITDragonThreads {
     public static void main(String[] args) throws Exception {
 
-         ExecutorService executorService  = Executors.newFixedThreadPool(8);
+        ExecutorService executorService = Executors.newFixedThreadPool(8);
         CompletionService<Long> executorCompletionService = new ExecutorCompletionService<Long>(executorService);
 
         CountWorker countWorker;
@@ -27,25 +27,28 @@ public class ITDragonThreads {
         for (int i = 0; i < 3; i++) {
             total += executorCompletionService.take().get();
         }
-        System.out.println(total / 1024 / 1024 / 1024 +"G");
+        System.out.println(total / 1024 / 1024 / 1024 + "G");
         long s1 = System.currentTimeMillis();
         System.out.println(s1 - s);
     }
 }
-class CountWorker  implements Callable<Long> {
+
+class CountWorker implements Callable<Long> {
     private Integer type = 0;
+
     public CountWorker(int type) {
         this.type = type;
     }
+
     @Override
     public Long call() throws Exception {
         List<String> list = new ArrayList<String>(Arrays.asList("c:", "d:", "e:"));
         Long l3 = countDiskSpace(list.get(type));
-        return   l3;
+        return l3;
     }
 
     // 统计磁盘大小
-    private Long countDiskSpace (String path) throws Exception{
+    private Long countDiskSpace(String path) throws Exception {
         File file = new File(path);
         long totalSpace = file.getTotalSpace();
         System.out.println(path + " 总空间大小 : " + totalSpace / 1024 / 1024 / 1024 + "G");

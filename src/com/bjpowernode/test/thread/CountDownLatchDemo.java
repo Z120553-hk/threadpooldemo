@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CountDownLatchDemo {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         final CountDownLatch countDownLatch = new CountDownLatch(2);
         for (int i = 0; i < 2; i++) {
@@ -33,9 +33,10 @@ public class CountDownLatchDemo {
 
     }
 }
+
 class CountDownLatchDemo_lambda {
 
-    public static void main(String[] args) throws  Exception{
+    public static void main(String[] args) throws Exception {
         final CountDownLatch countDownLatch = new CountDownLatch(2);
 
         for (int i = 0; i < 2; i++) {
@@ -57,11 +58,12 @@ class CountDownLatchDemo_lambda {
         System.out.println("main thread is run over");
     }
 }
+
 class CountDownLatchDemo_executor {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         final CountDownLatch countDownLatch = new CountDownLatch(4);
-        
+
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 5,  //核心池的大小（即线程池中的线程数目大于这个参数时，提交的任务会被放进任务缓存队列）
                 10, //线程池最大能容忍的线程数

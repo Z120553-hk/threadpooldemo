@@ -24,7 +24,7 @@ public class LamdbaDemo {
         };
 
 
-        Comparator<Integer> c_lamdba = (o1,o2) -> {
+        Comparator<Integer> c_lamdba = (o1, o2) -> {
             System.out.println("compare....");
             return o1 + o2;
         };

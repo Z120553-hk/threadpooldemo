@@ -2,8 +2,8 @@ package com.bjpowernode.test.thread;
 
 
 public class ConcurrentTest01 {
-    public static void main(String[] args) throws  Exception{
-        ConcurrentTask01 concurrentTask01 =  new ConcurrentTask01();
+    public static void main(String[] args) throws Exception {
+        ConcurrentTask01 concurrentTask01 = new ConcurrentTask01();
         Thread t1 = new Thread(concurrentTask01);
         Thread t2 = new Thread(concurrentTask01);
         Thread t3 = new Thread(concurrentTask01);
@@ -26,12 +26,14 @@ class ConcurrentTask01 implements Runnable {
     public void run() {
         try {
             int k = 0;
-                Thread.sleep(1000);
-                k++;
+            Thread.sleep(1000);
+            k++;
             System.out.println(k);
         } catch (Exception e) {
             // TODO: handle exception
         }
 
-    };
+    }
+
+    ;
 }

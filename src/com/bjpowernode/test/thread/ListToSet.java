@@ -6,13 +6,13 @@ import java.util.concurrent.*;
 
 public class ListToSet {
 
-    public static void main(String[] args) throws  Exception{
-       ExecutorService executorService = Executors.newFixedThreadPool(3);
+    public static void main(String[] args) throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
         CompletionService<List> executorCompletionService = new ExecutorCompletionService<List>(executorService);
         Mytask mytask;
         //long total = 0;
         List<String> list = new ArrayList<>();
-        for(int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 100; i++) {
             list.add(i + "");
         }
         long s = System.currentTimeMillis();
@@ -25,7 +25,7 @@ public class ListToSet {
 
         // 主线程相当于第五个线程，用于汇总数据
         for (int i = 0; i < 3; i++) {
-            List<String>  dataset = executorCompletionService.take().get();
+            List<String> dataset = executorCompletionService.take().get();
             for (String str : dataset) {
                 System.out.print(str + ",");
             }
@@ -40,36 +40,37 @@ public class ListToSet {
 class Mytask implements Callable<List> {
 
     List<String> datalist;
-
     int type;
-    public Mytask(List<String> list,int type) {
+
+    public Mytask(List<String> list, int type) {
         this.datalist = list;
         this.type = type;
     }
+
     @Override
     public List call() throws Exception {
         int length = datalist.size();
         int start = 0;
         int end = 0;
-        switch (type){
+        switch (type) {
             case 0:
                 start = 0;
-                end = length * 3 /10;
+                end = length * 3 / 10;
                 break;
             case 1:
-                start = length * 3 /10;
-                end = length * 6 /10;
+                start = length * 3 / 10;
+                end = length * 6 / 10;
                 break;
             case 2:
-                start = length * 6 /10;
+                start = length * 6 / 10;
                 end = length;
                 break;
         }
         List l3 = copy(datalist, start, end);
-        return  l3;
+        return l3;
     }
 
-    public List copy(List<String> list, int start, int end) throws  Exception{
+    public List copy(List<String> list, int start, int end) throws Exception {
         Thread.sleep(500);
         System.out.println(Thread.currentThread().getName());
         List<String> set = new ArrayList<>();

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class ConcurrentTest {
-    public static void main(String[] args) throws  Exception{
+    public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
         CompletionService<List> executorCompletionService = new ExecutorCompletionService<List>(executorService);
         ConcurrentTask ConcurrentTask = new ConcurrentTask();
@@ -22,13 +22,14 @@ public class ConcurrentTest {
 class ConcurrentTask implements Callable<List> {
 
     static int k = 0;
+
     @Override
     public List call() throws Exception {
 
         try {
 
-                Thread.sleep(1000);
-                k++;
+            Thread.sleep(1000);
+            k++;
         } catch (Exception e) {
             // TODO: handle exception
         }
@@ -36,5 +37,7 @@ class ConcurrentTask implements Callable<List> {
 
 
         return new ArrayList();
-    };
+    }
+
+    ;
 }
