@@ -94,6 +94,7 @@ class Test {
             } catch (BrokenBarrierException e) {
                 e.printStackTrace();
             }
+            System.out.println("merge...");
             System.out.println("所有线程写入完毕，继续处理其他任务...");
         }
     }

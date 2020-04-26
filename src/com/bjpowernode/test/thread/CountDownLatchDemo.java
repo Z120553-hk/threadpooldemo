@@ -16,6 +16,7 @@ public class CountDownLatchDemo {
                 public void run() {
                     try {
                         Thread.sleep(1000);
+                        int k = 1/0;
                         System.out.println(Thread.currentThread().getName() + " is run over");
                     } catch (Exception e) {
                         e.printStackTrace();
