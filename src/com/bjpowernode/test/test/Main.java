@@ -13,36 +13,17 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
-   // Object o = new Object();
-    byte [] b = new byte[100];
-    static List<Object> list = new ArrayList<Object>();
     public static void main(String[] args) throws Exception {
-               // B b =new B();
-                //b.test();
-        while(true) {
-            list.add(new Main());
+
+        int j = 0;
+        for (int i = 0; i < 10; i++) {
+            j = j++;
         }
-       // System.out.println("111");
+        System.out.println("adjust-branch");
+        System.out.println(j);
     }
+
 
 
 }
 
- class A {
-
-    public A() {
-        System.out.println("A");
-    }
-    void test() {
-        throw new RuntimeException("exception");
-    }
-
-}
-class B extends A {
-
-    public B() {
-        System.out.println("B");
-    }
-
-
-}
