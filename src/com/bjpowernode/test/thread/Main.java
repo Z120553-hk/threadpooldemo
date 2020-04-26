@@ -21,7 +21,6 @@ public class Main {
              count++;
          }
          System.out.println("main");
-
      }*/
     public static void main(String[] args) throws Exception {
         long s = System.currentTimeMillis();
@@ -52,6 +51,8 @@ public class Main {
     }
 
 }
+
+
 
 class User implements Runnable {
     @Override
@@ -86,6 +87,7 @@ class CountWorker11 implements Callable<Long> {
         long totalSpace = file.getTotalSpace();
         System.out.println(path + " 总空间大小 : " + totalSpace / 1024 / 1024 / 1024 + "G");
         Thread.sleep(1000);
+        System.out.println("branch....");
         return totalSpace;
     }
 }
